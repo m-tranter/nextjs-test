@@ -1,7 +1,7 @@
 
 import { Client } from 'contensis-delivery-api';
 import CecTable from './CecTable';
-
+import type { TableDataProps } from '@/app/page';
 
 const client = Client.create({
   rootUrl: `https://cms-${process.env.ALIAS}.cloud.contensis.com`,
@@ -9,14 +9,7 @@ const client = Client.create({
   projectId: process.env.PROJECT,
 });
 
-
-interface TableData {
-  caption: string;
-  contentType: { id: string }
-};
-
-
-async function FetchData(tableData: TableData) {
+async function FetchData(tableData: TableDataProps) {
   const { caption } = tableData;
   const ct = tableData.contentType.id;
 
@@ -26,9 +19,12 @@ async function FetchData(tableData: TableData) {
       contentTypeId: ct,
     });
   return (
-    <div className="table-wrapper">
-      <CecTable caption={caption} fields={fields} items={items} />
-    </div>
+    <>
+      {fields && items &&
+        <div className="table-wrapper">
+          <CecTable caption={caption} fields={fields.map(e => ({ name: e.name, id: e.id, dataFormat: e.dataFormat, dataType: e.dataType }))} items={items} />
+        </div>}
+    </>
   );
 }
 

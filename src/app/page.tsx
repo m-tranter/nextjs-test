@@ -1,8 +1,12 @@
 import FetchData from "@/components/FetchData";
-import Click from "@/components/click";
+
+export type TableDataProps = {
+  caption: string
+  contentType: { id: string }
+}
 export default function Home() {
   const title = "My first page";
-  const tableData = {
+  const tableData: TableDataProps = {
     caption: "A table of personal info",
     contentType: { id: "personalInfo" }
   };

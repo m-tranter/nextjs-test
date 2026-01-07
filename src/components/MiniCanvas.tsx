@@ -1,5 +1,5 @@
 
-export default function MiniCanvas(obj) {
+export default function MiniCanvas(obj: any) {
   const arr = Object.values(obj)
   return arr.map((e, i) => {
     if (e.type === "_paragraph" && typeof e.value === "string") {

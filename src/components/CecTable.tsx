@@ -1,8 +1,22 @@
 'use client'
 import MiniCanvas from './MiniCanvas';
 
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 
+export type Fields = {
+  "id": string
+  "name": {
+    "en-GB": string
+  },
+  "dataType": string,
+  "dataFormat": string,
+}
+
+type TableDataProps = {
+  caption: string,
+  items: any[],
+  fields: Fields[]
+}
 
 const makeTd = (data: any, dataType: string) => {
   if (data === null) {
@@ -32,8 +46,8 @@ const makeTd = (data: any, dataType: string) => {
 
 
 
-function CecTable({ caption, fields, items }) {
-  const makeHeader = (fields) => {
+function CecTable({ caption, fields, items }: TableDataProps) {
+  const makeHeader = (fields: Fields[]) => {
     if (!Array.isArray(fields)) {
       return null;
     } else {
@@ -41,7 +55,7 @@ function CecTable({ caption, fields, items }) {
     }
   }
 
-  const makeRows = (items) => {
+  const makeRows = (items: any[]) => {
     if (!Array.isArray(items)) {
       return null;
     } else {
