@@ -1,0 +1,33 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+}
+
+th,
+td {
+  border: 2px solid black;
+  padding: 8px;
+  text-align: left;
+  vertical-align: text-top;
+}
+
+th {
+  border-bottom: 3px solid black;
+}
+
+main {
+  padding: 20px;
+}
